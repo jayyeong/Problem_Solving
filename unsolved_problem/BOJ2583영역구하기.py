@@ -15,9 +15,6 @@ for _ in range(K):
         for j in range(ay, by):
             paper[j][i] = 1
 
-# for i in range(len(paper)):
-#     print(paper[i])
-
 def dfs(x, y):
     global volume
     if x < 0 or x >= M or y < 0 or y >= N:
