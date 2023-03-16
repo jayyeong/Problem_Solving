@@ -1,19 +1,7 @@
 import sys
 sys.setrecursionlimit(10**6)
-
 dx = [0, 0, -1, 1]
 dy = [1, -1, 0, 0]
-
-M, N, K = map(int, input().split())
-
-paper = [[0] * N for _ in range(M)]
-
-for _ in range(K):
-    ax, ay, bx, by = map(int, input().split())
-
-    for i in range(ax, bx):
-        for j in range(ay, by):
-            paper[j][i] = 1
 
 def dfs(x, y):
     global volume
@@ -28,6 +16,15 @@ def dfs(x, y):
             dfs(nx, ny)
         return volume
     return 0
+
+M, N, K = map(int, input().split())
+paper = [[0] * N for _ in range(M)]
+
+for _ in range(K):
+    ax, ay, bx, by = map(int, input().split())
+    for i in range(ax, bx):
+        for j in range(ay, by):
+            paper[j][i] = 1
 
 count = 0
 volume_list = []
