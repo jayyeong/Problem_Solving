@@ -56,8 +56,8 @@ def solution(arr):
     if len(word) % 8 != 0:
         while (len(word) != 8):
             word += '*'
-    answer.append(word[:8])
-    word = word[8:]
+        answer.append(word[:8])
+        word = word[8:]
 
     print(len(answer))
 
@@ -68,6 +68,6 @@ def solution(arr):
     print(answer)
     print(','.join(map(str,answer)))
 
-tt = ['BOOL', 'SHORT', 'BOOL', 'SHORT','FLOAT','BOOL','BOOL','BOOL','SHORT']
+tt = ['BOOL', 'SHORT', 'BOOL', 'SHORT','FLOAT','BOOL','BOOL','BOOL','SHORT','INT']
 
 solution(tt)
