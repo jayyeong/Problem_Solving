@@ -1,31 +1,23 @@
 from collections import deque
 
 N, K = map(int, input().split())
-
 answer = list(map(int, input().split()))
-
 OMR = list(map(int, input().split()))
+
+n = 0
+result = 0
 
 def pull(arr, p):
     a1, a2 = arr[:p], deque(arr[p:])
-
     a2.rotate(-1)
-
     a2[-1] = -1
-
     return a1 + list(a2)
 
 def push(arr, p):
     a1, a2 = arr[:p], deque(arr[p:])
-
     a2.rotate(1)
-
     a2[0] = -1
-
     return a1 + list(a2)
-
-n = 0
-result = 0
 
 def dfs(n, Arr):
     global result
@@ -45,5 +37,4 @@ def dfs(n, Arr):
             dfs(n + 1, push(Arr, i))
 
 dfs(0, OMR)
-
 print(result)
