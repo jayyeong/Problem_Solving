@@ -1,11 +1,11 @@
 from collections import deque
 
+n = 0
+result = 0
+
 N, K = map(int, input().split())
 answer = list(map(int, input().split()))
 OMR = list(map(int, input().split()))
-
-n = 0
-result = 0
 
 def pull(arr, p):
     a1, a2 = arr[:p], deque(arr[p:])
@@ -19,9 +19,8 @@ def push(arr, p):
     a2[0] = -1
     return a1 + list(a2)
 
-def dfs(n, Arr):
+def backTracking(n, Arr):
     global result
-
     count = 0
 
     for i in range(N):
@@ -33,8 +32,8 @@ def dfs(n, Arr):
 
     if n < K:
         for i in range(N):
-            dfs(n + 1, pull(Arr, i))
-            dfs(n + 1, push(Arr, i))
+            backTracking(n + 1, pull(Arr, i))
+            backTracking(n + 1, push(Arr, i))
 
-dfs(0, OMR)
+backTracking(0, OMR)
 print(result)
