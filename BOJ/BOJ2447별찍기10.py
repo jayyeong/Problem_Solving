@@ -2,7 +2,7 @@ init = ['***', '* *', '***']
 
 N = int(input())
 
-def recursion(n, arr):
+def recursion(n = 3, arr = init):
 
     if n == N:
         return arr
