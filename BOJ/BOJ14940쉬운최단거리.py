@@ -2,9 +2,9 @@ from collections import deque
 
 dx = [0, 1,  0, -1]
 dy = [1, 0, -1, 0]
-start_x, start_y = 0, 0
-maze = []
-wall_list = []
+start_x, start_y = 0, 0 # 목표 지점(시작 지점)
+maze = [] #지도를 담는 배열
+wall_list = [] # 갈 수 없는 땅들의 좌표들
 que = deque()
 
 n, m = map(int, input().split())
