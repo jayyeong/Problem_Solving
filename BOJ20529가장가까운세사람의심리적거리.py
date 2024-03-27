@@ -1,8 +1,3 @@
-MBTI1 = ['E', 'I']
-MBTI2 = ['N', 'S']
-MBTI3 = ['T', 'F']
-MBTI4 = ['J', 'P']
-
 MBTI_TEST = [['E', 'I'], ['N', 'S'], ['T', 'F'], ['J', 'P']]
 T = int(input())
 
