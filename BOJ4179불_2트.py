@@ -44,6 +44,8 @@ while deq:
                     deq.append((nx, ny, 'F'))
                     maze[nx][ny] = '#'
 
-    #print(maze)
+    for m in maze:
+        print(m)
+    print()
 
 print("IMPOSSIBLE")

@@ -1,18 +1,20 @@
 from collections import deque
+import sys
+
+input = sys.stdin.readline
 
 dx = [0, 0, 1, -1]
 dy = [1, -1, 0, 0]
 
-R, C = map(int, input().split())
+R, C = map(int, input().rstrip().split())
 
 maze = []
-answer = 0
 cutTime = 0
 fireList = deque()
 startPos = deque()
 
 for i in range(R):
-    maze.append(list(input()))
+    maze.append(list(input().rstrip()))
     for j in range(C):
         if maze[i][j] == 'J':
             startPos.append((i, j, 0))
@@ -24,31 +26,28 @@ while startPos:
     cutTime += 1
 
     while startPos and startPos[0][2] < cutTime:
-        x, y, t = startPos.popleft()
+        x, y, answer = startPos.popleft()
 
         if (x == 0 or x == R - 1 or y == 0 or y == C - 1) and maze[x][y] == 'J':
-            print(t + 1)
+            print(answer + 1)
             exit()
-
-        maze[x][y] = '#'
 
         for i in range(4):
             nx, ny = x + dx[i], y + dy[i]
             if 0 <= nx < R and 0 <= ny < C:
                 if maze[nx][ny] == '.':
                     maze[nx][ny] = 'J'
-                    startPos.append((nx, ny, t + 1))
+                    startPos.append((nx, ny, answer + 1))
 
     while fireList and fireList[0][2] < cutTime:
 
-        fx, fy, ft = fireList.popleft()
-        maze[fx][fy] = '#'
+        x, y, t = fireList.popleft()
 
         for i in range(4):
-            nfx, nfy = fx + dx[i], fy + dy[i]
-            if 0 <= nfx < R and 0 <= nfy < C:
-                if maze[nfx][nfy] == '.' or maze[nfx][nfy] == 'J':
-                    maze[nfx][nfy] = 'F'
-                    fireList.append((nfx, nfy, ft + 1))
+            nx, ny = x + dx[i], y + dy[i]
+            if 0 <= nx < R and 0 <= ny < C:
+                if maze[nx][ny] == '.' or maze[nx][ny] == 'J':
+                    maze[nx][ny] = 'F'
+                    fireList.append((nx, ny, t + 1))
 
 print("IMPOSSIBLE")
